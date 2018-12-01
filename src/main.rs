@@ -1,3 +1,5 @@
+extern crate aoc;
+
 fn main() {
-    println!("Hello, world!");
+    aoc::day_one::part_one();
 }

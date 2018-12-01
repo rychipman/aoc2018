@@ -46,3 +46,17 @@
 //
 // Starting with a frequency of zero, what is the resulting frequency after all
 // of the changes in frequency have been applied?
+
+fn load_input() -> Vec<i32> {
+    let input = include_str!("input.dat");
+    input
+        .trim()
+        .split("\n")
+        .map(|l| l.parse().expect("failed to parse int from string"))
+        .collect()
+}
+
+pub fn part_one() {
+    let sum: i32 = load_input().iter().sum();
+    println!("end freq: {}", sum);
+}
