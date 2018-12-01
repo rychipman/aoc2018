@@ -47,6 +47,8 @@
 // Starting with a frequency of zero, what is the resulting frequency after all
 // of the changes in frequency have been applied?
 
+use std::collections::HashSet;
+
 fn load_input() -> Vec<i32> {
     let input = include_str!("input.dat");
     input
@@ -58,5 +60,22 @@ fn load_input() -> Vec<i32> {
 
 pub fn part_one() {
     let sum: i32 = load_input().iter().sum();
-    println!("end freq: {}", sum);
+    println!("input end freq: {}", sum);
+}
+
+pub fn part_two() {
+    println!("twice-visited freq: {}", find_dup_freq());
+}
+
+fn find_dup_freq() -> i32 {
+    let mut seen = HashSet::new();
+    let mut last: i32 = 0;
+    for df in load_input().iter().cycle() {
+        if seen.contains(&last) {
+            return last;
+        }
+        seen.insert(last);
+        last += df;
+    }
+    panic!("unreachable")
 }
